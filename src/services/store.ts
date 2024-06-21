@@ -5,8 +5,11 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
+import { UnknownAction, configureStore, createStore } from '@reduxjs/toolkit';
 
-const store = {};
+const store = configureStore({
+  reducer: () => 'some function'
+});
 
 export type RootState = any;
 
