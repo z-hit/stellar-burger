@@ -12,13 +12,13 @@ import {
 import '../../index.css';
 import styles from './app.module.css';
 
-import { AppHeader, Modal, OrderInfo } from '@components';
+import { AppHeader, Modal, OrderInfo, IngredientDetails } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ProtectedRoute } from '../protected-route/protected-route';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredientsSlice';
-import { AppDispatch } from 'src/services/store';
+import { AppDispatch } from '../../services/store';
 
 const App = () => {
   const location = useLocation();
@@ -104,6 +104,22 @@ const App = () => {
             element={
               <Modal onClose={handleCloseModal} title={''}>
                 <OrderInfo />
+              </Modal>
+            }
+          />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <Modal onClose={handleCloseModal} title={''}>
+                <OrderInfo />
+              </Modal>
+            }
+          />
+          <Route
+            path='/ingredients/:id'
+            element={
+              <Modal onClose={handleCloseModal} title={''}>
+                <IngredientDetails />
               </Modal>
             }
           />
