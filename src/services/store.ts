@@ -10,9 +10,13 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
+import { orderSlice } from './orderSlice';
+import { constructorSlice } from './constructorSlice';
 
 const rootReducer = {
-  [ingredientsSlice.name]: ingredientsSlice.reducer
+  [ingredientsSlice.name]: ingredientsSlice.reducer,
+  [orderSlice.name]: orderSlice.reducer
+  //[constructorSlice.name]: constructorSlice.reducer
 }; // Заменить на импорт настоящего редьюсера
 
 const store = configureStore({

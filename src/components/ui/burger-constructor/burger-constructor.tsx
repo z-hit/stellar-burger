@@ -23,7 +23,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
       <div className={`${styles.element} mb-4 mr-4`}>
         <ConstructorElement
           type='top'
-          //isLocked
+          isLocked
           text={`${constructorItems.bun.name} (верх)`}
           price={constructorItems.bun.price}
           thumbnail={constructorItems.bun.image}
