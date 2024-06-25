@@ -15,13 +15,23 @@ import styles from './app.module.css';
 import { AppHeader, Modal, OrderInfo } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ProtectedRoute } from '../protected-route/protected-route';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getIngredients } from '../../services/ingredientsSlice';
+import { AppDispatch } from 'src/services/store';
 
 const App = () => {
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundlocation;
-
   const navigate = useNavigate();
   const handleCloseModal = () => navigate(-1);
+  const dispatch: AppDispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getIngredients());
+
+    //dispatch(setAuthChecked());
+  }, []);
 
   return (
     <div className={styles.app}>
