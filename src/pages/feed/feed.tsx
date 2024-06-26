@@ -6,11 +6,14 @@ import { useSelector } from 'react-redux';
 import { selectorFeedData } from '../../services/feedSlice';
 
 export const Feed: FC = () => {
+  const feedData = useSelector(selectorFeedData);
   console.log('test Feed');
+  console.log(feedData);
+
   /** TODO: взять переменную из стора */
-  const orders: TOrder[] = useSelector(selectorFeedData).orders;
+
+  const orders: TOrder[] = feedData.orders;
   console.log(orders);
-  console.log(useSelector(selectorFeedData));
 
   if (!orders.length) {
     return <Preloader />;
