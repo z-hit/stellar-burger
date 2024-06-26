@@ -13,7 +13,6 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
   const navigate = useNavigate();
   const navigateTo = (path: string) => navigate(path);
-  const isActive = (path: string) => path === String(useLocation());
 
   return (
     <header className={styles.header}>

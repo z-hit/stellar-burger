@@ -12,10 +12,13 @@ import {
 } from 'react-redux';
 import { orderSlice } from './orderSlice';
 import { constructorSlice } from './constructorSlice';
+import { feedSlice } from './feedSlice';
 
 const rootReducer = {
   [ingredientsSlice.name]: ingredientsSlice.reducer,
-  [orderSlice.name]: orderSlice.reducer
+  [orderSlice.name]: orderSlice.reducer,
+  [feedSlice.name]: feedSlice.reducer
+
   //[constructorSlice.name]: constructorSlice.reducer
 }; // Заменить на импорт настоящего редьюсера
 
