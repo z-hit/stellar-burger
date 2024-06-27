@@ -31,7 +31,8 @@ export const feedSlice = createSlice({
   name: 'feed',
   initialState,
   selectors: {
-    selectorFeedData: (state) => state.data
+    selectorFeedData: (state) => state.data,
+    selectorIsLoading: (state) => state.isLoading
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -52,6 +53,6 @@ export const feedSlice = createSlice({
   }
 });
 
-export const { selectorFeedData } = feedSlice.selectors;
+export const { selectorFeedData, selectorIsLoading } = feedSlice.selectors;
 export const {} = feedSlice.actions;
 export const reducer = feedSlice.reducer;

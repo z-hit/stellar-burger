@@ -12,10 +12,7 @@ const getOrders = (orders: TOrder[], status: string): number[] =>
     .slice(0, 20);
 
 export const FeedInfo: FC = () => {
-  console.log('test');
-
   const feedData = useSelector(selectorFeedData);
-  console.log(feedData);
 
   /** TODO: взять переменные из стора */
   const orders: TOrder[] = feedData.orders;

@@ -1,15 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TConstructorIngredient } from '@utils-types';
 
 type TConstructorState = {
-  bun: { price: number };
+  bun: TConstructorIngredient | null;
   ingredients: TConstructorIngredient[];
 };
 
 const initialState: TConstructorState = {
-  bun: {
-    price: 0
-  },
+  bun: null,
   ingredients: []
 };
 
@@ -19,7 +17,11 @@ export const constructorSlice = createSlice({
   selectors: {
     selectorConstructor: (state) => state
   },
-  reducers: {}
+  reducers: {
+    addBun: (state, action: PayloadAction<TConstructorState>) => {
+      state.bun = action.payload.bun;
+    }
+  }
 });
 
 export const { selectorConstructor } = constructorSlice.selectors;
