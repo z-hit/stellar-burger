@@ -19,8 +19,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredientsSlice';
 import { AppDispatch } from '../../services/store';
-import { getFeed } from '../../services/feedSlice';
-import { displayPartsToString } from 'typescript';
 
 const App = () => {
   const location = useLocation();

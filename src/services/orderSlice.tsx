@@ -1,9 +1,6 @@
 import { RequestStatus } from '../utils/request-status';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { orderBurgerApi } from '@api';
+import { createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
-import { OrdersList } from '@components';
-import { trackOrSetValue } from '@testing-library/user-event/dist/types/document/trackValue';
 
 type TOrderState = {
   order: TOrder;

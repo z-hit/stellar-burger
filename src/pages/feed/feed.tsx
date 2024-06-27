@@ -19,8 +19,6 @@ export const Feed: FC = () => {
     dispatch(getFeed());
   }, []);
 
-  const handleGetFeed = () => dispatch(getFeed());
-
   /** DONE: взять переменную из стора */
 
   const orders: TOrder[] = feedData.orders;
@@ -28,7 +26,7 @@ export const Feed: FC = () => {
   return (
     <>
       {isLoading && <Preloader />}
-      <FeedUI orders={orders} handleGetFeeds={handleGetFeed} />;
+      <FeedUI orders={orders} handleGetFeeds={() => dispatch(getFeed())} />;
     </>
   );
 };
