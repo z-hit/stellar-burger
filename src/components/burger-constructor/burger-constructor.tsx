@@ -6,12 +6,8 @@ import { selectorConstructor } from '../../services/constructorSlice';
 
 export const BurgerConstructor: FC = () => {
   const constructorData = useSelector(selectorConstructor);
-  /* const constructorBun = constructorData.bun
-    ? { price: constructorData.bun.price }
-    : null;
-  const constructorIngredients = constructorData.ingredients; */
 
-  /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
+  /** TODO: взять переменные DONE: constructorItems, orderRequest и orderModalData из стора */
   const constructorItems = {
     bun: constructorData.bun,
     ingredients: constructorData.ingredients
