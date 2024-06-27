@@ -40,5 +40,6 @@ export const constructorSlice = createSlice({
 });
 
 export const { selectorConstructor } = constructorSlice.selectors;
-export const {} = constructorSlice.actions;
+export const { addBun, removeBun, addIngredient, removeIngredient } =
+  constructorSlice.actions;
 export const reducer = constructorSlice.reducer;
