@@ -32,7 +32,7 @@ export const constructorSlice = createSlice({
       action: PayloadAction<TConstructorIngredient>
     ) => {
       state.ingredients = state.ingredients.filter(
-        (i) => i._id === action.payload._id
+        (i) => i._id !== action.payload._id
       );
     }
   },
