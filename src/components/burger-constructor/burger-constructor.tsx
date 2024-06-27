@@ -13,8 +13,6 @@ export const BurgerConstructor: FC = () => {
     ingredients: constructorData.ingredients
   };
 
-  console.log('data', constructorData);
-
   const orderRequest = false;
 
   const orderModalData = null;
@@ -24,7 +22,7 @@ export const BurgerConstructor: FC = () => {
   };
   const closeOrderModal = () => {};
 
-  /* const price = useMemo(
+  const price = useMemo(
     () =>
       (constructorItems.bun ? constructorItems.bun.price * 2 : 0) +
       constructorItems.ingredients.reduce(
@@ -32,11 +30,7 @@ export const BurgerConstructor: FC = () => {
         0
       ),
     [constructorItems]
-  ); */
-
-  const price = 0;
-
-  //return null;
+  );
 
   return (
     <BurgerConstructorUI
