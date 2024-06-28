@@ -22,10 +22,12 @@ import { AppDispatch } from '../../services/store';
 
 const App = () => {
   const location = useLocation();
-  const backgroundLocation = location.state?.backgroundlocation;
+  const backgroundLocation = location.state?.background;
   const navigate = useNavigate();
   const handleCloseModal = () => navigate(-1);
   const dispatch: AppDispatch = useDispatch();
+
+  console.log(location);
 
   useEffect(() => {
     dispatch(getIngredients());
@@ -38,6 +40,7 @@ const App = () => {
       <Routes location={backgroundLocation || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route
           path='/login'
           element={

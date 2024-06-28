@@ -7,6 +7,7 @@ import { BurgerConstructor } from '../../components';
 import { Preloader } from '../../components/ui';
 import { FC } from 'react';
 import { selectorIngredientsLoading } from '../../services/ingredientsSlice';
+import { useLocation } from 'react-router-dom';
 
 export const ConstructorPage: FC = () => {
   /** DONE: взять переменную из стора */
