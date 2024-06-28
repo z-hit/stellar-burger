@@ -10,18 +10,11 @@ export const IngredientsCategory = forwardRef<
   TIngredientsCategoryProps
 >(({ title, titleRef, ingredients }, ref) => {
   const constructorData = useSelector(selectorConstructor);
-  /** TODO: DONE ? взять переменную из стора */
+  /** DONE взять переменную из стора */
   const burgerConstructor = {
     bun: constructorData.bun,
     ingredients: constructorData.ingredients
   };
-
-  /* const burgerConstructor = {
-    bun: {
-      _id: ''
-    },
-    ingredients: []
-  }; */
 
   const ingredientsCounters = useMemo(() => {
     const { bun, ingredients } = burgerConstructor;

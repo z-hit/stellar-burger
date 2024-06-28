@@ -6,6 +6,7 @@ import { TBurgerIngredientProps } from './type';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../services/store';
 import { constructorSlice } from '../../services/constructorSlice';
+import { nanoid } from '@reduxjs/toolkit';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
@@ -13,14 +14,17 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const dispatch: AppDispatch = useDispatch();
 
     const handleAdd = () => {
-      const newId = String(Math.random() * 10);
+      const newId = nanoid();
 
       ingredient.type === 'bun'
         ? dispatch(
             constructorSlice.actions.addBun({ ...ingredient, id: newId })
           )
         : dispatch(
-            constructorSlice.actions.addIngredient({ ...ingredient, id: newId })
+            constructorSlice.actions.addIngredient({
+              ...ingredient,
+              id: newId
+            })
           );
     };
 
