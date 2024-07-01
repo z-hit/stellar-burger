@@ -1,9 +1,14 @@
 import { FC, FormEvent, useState } from 'react';
 import { LoginUI } from '@ui-pages';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, selectorAuthenticated } from '../../services/userSlice';
+import {
+  loginUser,
+  selectorAuthenticated,
+  selectorIsLoading
+} from '../../services/userSlice';
 import { AppDispatch } from '../../services/store';
 import { Navigate } from 'react-router-dom';
+import { Preloader } from '@ui';
 
 export const Login: FC = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +16,7 @@ export const Login: FC = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const isAuthenticated = useSelector(selectorAuthenticated);
+  const isLoading = useSelector(selectorIsLoading);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -24,6 +30,10 @@ export const Login: FC = () => {
 
   if (isAuthenticated) {
     return <Navigate to={'/profile'} />;
+  }
+
+  if (isLoading) {
+    return <Preloader />;
   }
 
   return (

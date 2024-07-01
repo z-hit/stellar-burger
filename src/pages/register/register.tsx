@@ -2,8 +2,13 @@ import { FC, FormEvent, SyntheticEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { AppDispatch } from 'src/services/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser, selectorAuthenticated } from '../../services/userSlice';
+import {
+  registerUser,
+  selectorAuthenticated,
+  selectorIsLoading
+} from '../../services/userSlice';
 import { Navigate } from 'react-router-dom';
+import { Preloader } from '@ui';
 
 export const Register: FC = () => {
   const [name, setName] = useState('');
@@ -12,6 +17,7 @@ export const Register: FC = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const isAuthenticated = useSelector(selectorAuthenticated);
+  const isLoading = useSelector(selectorIsLoading);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -25,6 +31,10 @@ export const Register: FC = () => {
 
   if (isAuthenticated) {
     return <Navigate to={'/profile'} />;
+  }
+
+  if (isLoading) {
+    return <Preloader />;
   }
 
   return (

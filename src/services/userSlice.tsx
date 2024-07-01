@@ -37,7 +37,8 @@ export const userSlice = createSlice({
   initialState,
   selectors: {
     selectorUserData: (state) => state.data,
-    selectorAuthenticated: (state) => state.isAuthenticated
+    selectorAuthenticated: (state) => state.isAuthenticated,
+    selectorIsLoading: (state) => state.isLoading
   },
   reducers: {},
   extraReducers(builder) {
@@ -73,6 +74,7 @@ export const userSlice = createSlice({
   }
 });
 
-export const { selectorUserData, selectorAuthenticated } = userSlice.selectors;
+export const { selectorUserData, selectorAuthenticated, selectorIsLoading } =
+  userSlice.selectors;
 export const {} = userSlice.actions;
 export const reducer = userSlice.reducer;
