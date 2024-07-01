@@ -1,5 +1,5 @@
-import { TRegisterData, loginUserApi, registerUserApi } from '@api';
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { TLoginData, TRegisterData, loginUserApi, registerUserApi } from '@api';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
 
 type TUserState = {
@@ -7,7 +7,6 @@ type TUserState = {
   isAuthChecked: boolean;
   isAuthenticated: boolean;
   loginUserError: string | undefined;
-  loginUserRequest: boolean;
   registerError: string | undefined;
   isLoading: boolean;
 };
@@ -17,7 +16,6 @@ const initialState: TUserState = {
   isAuthChecked: false,
   isAuthenticated: false,
   loginUserError: undefined,
-  loginUserRequest: false,
   registerError: undefined,
   isLoading: false
 };
@@ -26,6 +24,12 @@ export const registerUser = createAsyncThunk(
   'user/registerUser',
   async ({ name, email, password }: TRegisterData) =>
     await registerUserApi({ name, email, password })
+);
+
+export const loginUser = createAsyncThunk(
+  'user/loginUser',
+  async ({ email, password }: TLoginData) =>
+    await loginUserApi({ email, password })
 );
 
 export const userSlice = createSlice({
@@ -49,6 +53,21 @@ export const userSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
+        state.registerError = action.error.message;
+      })
+      .addCase(loginUser.pending, (state) => {
+        state.isLoading = true;
+        state.loginUserError = undefined;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isAuthChecked = true;
+        state.isAuthenticated = true;
+        state.data = action.payload.user;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isAuthChecked = true;
         state.registerError = action.error.message;
       });
   }
