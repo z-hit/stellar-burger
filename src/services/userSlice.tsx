@@ -37,10 +37,15 @@ export const userSlice = createSlice({
   initialState,
   selectors: {
     selectorUserData: (state) => state.data,
+    selectorIsAuthChecked: (state) => state.isAuthChecked,
     selectorAuthenticated: (state) => state.isAuthenticated,
     selectorIsLoading: (state) => state.isLoading
   },
-  reducers: {},
+  reducers: {
+    setAuthChecked: (state) => {
+      state.isAuthChecked = true;
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(registerUser.pending, (state) => {
@@ -74,7 +79,11 @@ export const userSlice = createSlice({
   }
 });
 
-export const { selectorUserData, selectorAuthenticated, selectorIsLoading } =
-  userSlice.selectors;
-export const {} = userSlice.actions;
+export const {
+  selectorUserData,
+  selectorIsAuthChecked,
+  selectorAuthenticated,
+  selectorIsLoading
+} = userSlice.selectors;
+export const { setAuthChecked } = userSlice.actions;
 export const reducer = userSlice.reducer;

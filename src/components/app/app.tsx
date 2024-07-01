@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredientsSlice';
 import { AppDispatch } from '../../services/store';
+import { setAuthChecked } from '../../services/userSlice';
 
 const App = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getIngredients());
-    //dispatch(setAuthChecked());
+    dispatch(setAuthChecked());
   }, []);
 
   return (
@@ -42,7 +43,7 @@ const App = () => {
         <Route
           path='/login'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute onlyUnAuth>
               <Login />
             </ProtectedRoute>
           }
@@ -50,7 +51,7 @@ const App = () => {
         <Route
           path='/register'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute onlyUnAuth>
               <Register />
             </ProtectedRoute>
           }
@@ -58,7 +59,7 @@ const App = () => {
         <Route
           path='/forgot-password'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute onlyUnAuth>
               <ForgotPassword />
             </ProtectedRoute>
           }
