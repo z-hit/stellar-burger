@@ -5,7 +5,7 @@ import { selectorUserData } from '../../services/userSlice';
 
 export const Profile: FC = () => {
   const userData = useSelector(selectorUserData);
-  /** TODO: взять переменную из стора */
+  /** DONE: взять переменную из стора */
   const user = userData ? userData : { name: '', email: '' };
 
   const [formValue, setFormValue] = useState({
