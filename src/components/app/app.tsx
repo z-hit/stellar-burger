@@ -27,8 +27,6 @@ const App = () => {
   const handleCloseModal = () => navigate(-1);
   const dispatch: AppDispatch = useDispatch();
 
-  console.log(location);
-
   useEffect(() => {
     dispatch(getIngredients());
     //dispatch(setAuthChecked());
