@@ -8,6 +8,7 @@ type TUserState = {
   isAuthenticated: boolean;
   loginUserError: string | undefined;
   loginUserRequest: boolean;
+  registerError: string | undefined;
   isLoading: boolean;
 };
 
@@ -17,18 +18,14 @@ const initialState: TUserState = {
   isAuthenticated: false,
   loginUserError: undefined,
   loginUserRequest: false,
+  registerError: undefined,
   isLoading: false
 };
 
 export const registerUser = createAsyncThunk(
   'user/registerUser',
-  async (userData: TRegisterData) => await registerUserApi(userData)
-);
-
-export const loginUser = createAsyncThunk(
-  'user/loginUser',
-  async ({ email, password }: Omit<TRegisterData, 'name'>) =>
-    await loginUserApi({ email, password })
+  async ({ name, email, password }: TRegisterData) =>
+    await registerUserApi({ name, email, password })
 );
 
 export const userSlice = createSlice({
@@ -47,26 +44,12 @@ export const userSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isAuthChecked = true;
+        state.isAuthenticated = true;
         state.data = action.payload.user;
       })
-      .addCase(registerUser.rejected, (state) => {
+      .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
-      })
-      .addCase(loginUser.pending, (state) => {
-        state.loginUserRequest = true;
-        state.isLoading = true;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.loginUserRequest = false;
-        state.isLoading = false;
-        state.isAuthChecked = true;
-        state.data = action.payload.user;
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        state.loginUserRequest = false;
-        state.isLoading = false;
-        state.loginUserError = action.error.message;
-        state.isAuthChecked = true;
+        state.registerError = action.error.message;
       });
   }
 });
