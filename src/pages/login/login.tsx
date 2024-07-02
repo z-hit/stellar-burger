@@ -26,8 +26,6 @@ export const Login: FC = () => {
       return console.log('no login data');
     }
     dispatch(loginUser({ email, password }));
-    console.log('register data sent');
-    console.log({ email, password });
   };
 
   if (isAuthenticated) {

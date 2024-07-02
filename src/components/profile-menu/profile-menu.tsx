@@ -11,7 +11,6 @@ export const ProfileMenu: FC = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    console.log('logout button works');
   };
 
   return <ProfileMenuUI handleLogout={handleLogout} pathname={pathname} />;

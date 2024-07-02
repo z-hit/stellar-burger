@@ -19,7 +19,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredientsSlice';
 import { AppDispatch } from '../../services/store';
-import { setAuthChecked } from '../../services/userSlice';
 
 const App = () => {
   const location = useLocation();
@@ -30,7 +29,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getIngredients());
-    dispatch(setAuthChecked());
   }, []);
 
   return (

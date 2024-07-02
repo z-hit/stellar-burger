@@ -1,8 +1,5 @@
 import { useSelector } from 'react-redux';
-import {
-  selectorIsAuthChecked,
-  selectorUserData
-} from '../../services/userSlice';
+import { selectorUserData } from '../../services/userSlice';
 import { Preloader } from '../ui/preloader';
 import { Navigate, useLocation } from 'react-router-dom';
 import { selectorIsLoading } from '../../services/userSlice';

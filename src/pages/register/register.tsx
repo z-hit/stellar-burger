@@ -5,12 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   registerUser,
   selectorAuthenticated,
-  selectorIsLoading
+  selectorIsLoading,
+  selectorRegisterError
 } from '../../services/userSlice';
 import { Navigate } from 'react-router-dom';
 import { Preloader } from '@ui';
 
 export const Register: FC = () => {
+  type TRegisterErrorText = undefined | string;
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,15 +21,22 @@ export const Register: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const isAuthenticated = useSelector(selectorAuthenticated);
   const isLoading = useSelector(selectorIsLoading);
+  const registerError = useSelector(selectorRegisterError);
+
+  var registerErrorText: TRegisterErrorText = undefined;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    if (registerError) {
+      registerErrorText = registerError;
+    }
+
     if (!name || !email || !password) {
-      return console.log('no register data');
+      registerErrorText = 'Пожалуйста, заполните все поля.';
+      return registerErrorText;
     }
     dispatch(registerUser({ name, email, password }));
-    console.log('register data sent');
   };
 
   if (isAuthenticated) {
@@ -39,7 +49,7 @@ export const Register: FC = () => {
 
   return (
     <RegisterUI
-      errorText=''
+      errorText={registerErrorText}
       email={email}
       userName={name}
       password={password}
