@@ -5,6 +5,7 @@ import {
 } from '../../services/userSlice';
 import { Preloader } from '../ui/preloader';
 import { Navigate, useLocation } from 'react-router-dom';
+import { selectorIsLoading } from '../../services/userSlice';
 
 type ProtectedRouteProps = {
   onlyUnAuth?: boolean;
@@ -15,11 +16,11 @@ export const ProtectedRoute = ({
   onlyUnAuth,
   children
 }: ProtectedRouteProps) => {
-  const isAuthChecked = useSelector(selectorIsAuthChecked);
+  const isLoading = useSelector(selectorIsLoading);
   const user = useSelector(selectorUserData);
   const location = useLocation();
 
-  if (!isAuthChecked) {
+  if (isLoading) {
     return <Preloader />;
   }
 

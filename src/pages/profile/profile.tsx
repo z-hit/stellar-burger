@@ -1,7 +1,8 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectorUserData } from '../../services/userSlice';
+import { selectorIsLoading, selectorUserData } from '../../services/userSlice';
+import { Preloader } from '@ui';
 
 export const Profile: FC = () => {
   const userData = useSelector(selectorUserData);
