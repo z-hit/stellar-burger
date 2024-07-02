@@ -1,4 +1,10 @@
-import { TLoginData, TRegisterData, loginUserApi, registerUserApi } from '@api';
+import {
+  TLoginData,
+  TRegisterData,
+  loginUserApi,
+  logoutApi,
+  registerUserApi
+} from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
 
@@ -31,6 +37,8 @@ export const loginUser = createAsyncThunk(
   async ({ email, password }: TLoginData) =>
     await loginUserApi({ email, password })
 );
+
+export const logoutUser = createAsyncThunk('user/logoutUser', logoutApi);
 
 export const userSlice = createSlice({
   name: 'user',
@@ -74,6 +82,19 @@ export const userSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isAuthChecked = true;
+        state.registerError = action.error.message;
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isAuthChecked = true;
+        state.isAuthenticated = false;
+        state.data = null;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.isLoading = false;
         state.registerError = action.error.message;
       });
   }

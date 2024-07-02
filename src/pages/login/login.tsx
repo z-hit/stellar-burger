@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   loginUser,
   selectorAuthenticated,
-  selectorIsLoading
+  selectorIsLoading,
+  selectorUserData
 } from '../../services/userSlice';
 import { AppDispatch } from '../../services/store';
 import { Navigate } from 'react-router-dom';
@@ -26,6 +27,7 @@ export const Login: FC = () => {
     }
     dispatch(loginUser({ email, password }));
     console.log('register data sent');
+    console.log({ email, password });
   };
 
   if (isAuthenticated) {
