@@ -18,16 +18,20 @@
   display: flex;
   text-decoration: none;
   color: var(--text-inactive-color);
-}
-
-.link_active {
-  color: var(--text-primary-color);
+  cursor: pointer;
 }
 
 .link_position_last {
   display: flex;
   justify-content: flex-end;
+  text-decoration: none;
+  color: var(--text-inactive-color);
   flex-basis: 35%;
+  cursor: pointer;
+}
+
+.link_active {
+  color: var(--text-primary-color);
 }
 
 .logo {
