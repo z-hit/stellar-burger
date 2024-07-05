@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { TOrder } from '@utils-types';
 import { FeedInfoUI } from '../ui/feed-info';
-import { selectorFeedData } from '../../services/feedSlice';
-import { useAppSelector } from '../../utils/hooks';
+import { getFeed, selectorFeedData } from '../../services/feedSlice';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 
 const getOrders = (orders: TOrder[], status: string): number[] =>
   orders
@@ -12,7 +12,12 @@ const getOrders = (orders: TOrder[], status: string): number[] =>
     .slice(0, 20);
 
 export const FeedInfo: FC = () => {
+  const dispatch = useAppDispatch();
   const feedData = useAppSelector(selectorFeedData);
+
+  useEffect(() => {
+    dispatch(getFeed());
+  }, []);
 
   const orders: TOrder[] = feedData.orders;
   const feed = {
