@@ -3,7 +3,7 @@ import { Preloader } from '../ui/preloader';
 import { IngredientDetailsUI } from '../ui/ingredient-details';
 import { selectorIngredients } from '../../services/ingredientsSlice';
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../app/hooks';
+import { useAppSelector } from '../../utils/hooks';
 
 export const IngredientDetails: FC = () => {
   const ingredients = useAppSelector(selectorIngredients);

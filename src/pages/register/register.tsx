@@ -2,7 +2,7 @@ import { FC, FormEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { registerUser, selectorIsLoading } from '../../services/userSlice';
 import { Preloader } from '@ui';
-import { useAppDispatch, useAppSelector } from '../../components/app/hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 
 export const Register: FC = () => {
   const dispatch = useAppDispatch();

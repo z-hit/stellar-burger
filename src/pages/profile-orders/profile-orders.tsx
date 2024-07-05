@@ -2,7 +2,7 @@ import { ProfileOrdersUI } from '@ui-pages';
 import { TOrder } from '@utils-types';
 import { FC, useEffect } from 'react';
 import { getOrders, selectorProfileOrders } from '../../services/userSlice';
-import { useAppDispatch, useAppSelector } from '../../components/app/hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 
 export const ProfileOrders: FC = () => {
   const dispatch = useAppDispatch();

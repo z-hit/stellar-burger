@@ -8,7 +8,7 @@ import {
 } from '../../services/ingredientsSlice';
 import { useParams } from 'react-router-dom';
 import { getFeed, selectorFeedData } from '../../services/feedSlice';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 
 export const OrderInfo: FC = () => {
   const dispatch = useAppDispatch();

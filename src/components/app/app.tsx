@@ -19,7 +19,7 @@ import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredientsSlice';
 import { checkUserAuth, setAuthChecked } from '../../services/userSlice';
 import { getFeed } from '../../services/feedSlice';
-import { useAppDispatch } from './hooks';
+import { useAppDispatch } from '../../utils/hooks';
 
 const App = () => {
   const location = useLocation();
