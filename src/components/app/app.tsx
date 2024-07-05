@@ -15,19 +15,18 @@ import styles from './app.module.css';
 import { AppHeader, Modal, OrderInfo, IngredientDetails } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ProtectedRoute } from '../protected-route/protected-route';
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredientsSlice';
-import { AppDispatch } from '../../services/store';
 import { checkUserAuth, setAuthChecked } from '../../services/userSlice';
 import { getFeed } from '../../services/feedSlice';
+import { useAppDispatch } from './hooks';
 
 const App = () => {
   const location = useLocation();
   const backgroundLocation = location.state?.background;
   const navigate = useNavigate();
   const handleCloseModal = () => navigate(-1);
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getIngredients());

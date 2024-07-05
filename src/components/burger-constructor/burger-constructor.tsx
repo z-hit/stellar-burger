@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   clearConstructor,
   selectorConstructor
@@ -13,11 +13,11 @@ import {
   selectorisLoading
 } from '../../services/orderSlice';
 import { useNavigate } from 'react-router-dom';
-import { AppDispatch } from '../../services/store';
 import { addOrder, selectorAuthenticated } from '../../services/userSlice';
+import { useAppDispatch } from '../app/hooks';
 
 export const BurgerConstructor: FC = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const constructorData = useSelector(selectorConstructor);
   const orderRequest = useSelector(selectorisLoading);
   const isAuthenticated = useSelector(selectorAuthenticated);
