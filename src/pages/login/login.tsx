@@ -1,13 +1,12 @@
 import { FC, FormEvent, useState } from 'react';
 import { LoginUI } from '@ui-pages';
-import { useSelector } from 'react-redux';
 import { loginUser, selectorIsLoading } from '../../services/userSlice';
 import { Preloader } from '@ui';
-import { useAppDispatch } from '../../components/app/hooks';
+import { useAppDispatch, useAppSelector } from '../../components/app/hooks';
 
 export const Login: FC = () => {
   const dispatch = useAppDispatch();
-  const isLoading = useSelector(selectorIsLoading);
+  const isLoading = useAppSelector(selectorIsLoading);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

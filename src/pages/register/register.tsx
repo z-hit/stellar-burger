@@ -1,13 +1,12 @@
 import { FC, FormEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
-import { useSelector } from 'react-redux';
 import { registerUser, selectorIsLoading } from '../../services/userSlice';
 import { Preloader } from '@ui';
-import { useAppDispatch } from '../../components/app/hooks';
+import { useAppDispatch, useAppSelector } from '../../components/app/hooks';
 
 export const Register: FC = () => {
   const dispatch = useAppDispatch();
-  const isLoading = useSelector(selectorIsLoading);
+  const isLoading = useAppSelector(selectorIsLoading);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

@@ -1,5 +1,3 @@
-import { useSelector } from '../../services/store';
-
 import styles from './constructor-page.module.css';
 
 import { BurgerIngredients } from '../../components';
@@ -7,9 +5,10 @@ import { BurgerConstructor } from '../../components';
 import { Preloader } from '../../components/ui';
 import { FC } from 'react';
 import { selectorIngredientsLoading } from '../../services/ingredientsSlice';
+import { useAppSelector } from '../../components/app/hooks';
 
 export const ConstructorPage: FC = () => {
-  const isIngredientsLoading = useSelector(selectorIngredientsLoading);
+  const isIngredientsLoading = useAppSelector(selectorIngredientsLoading);
 
   return (
     <>

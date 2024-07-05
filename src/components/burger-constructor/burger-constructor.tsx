@@ -1,7 +1,6 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { useSelector } from 'react-redux';
 import {
   clearConstructor,
   selectorConstructor
@@ -14,15 +13,15 @@ import {
 } from '../../services/orderSlice';
 import { useNavigate } from 'react-router-dom';
 import { addOrder, selectorAuthenticated } from '../../services/userSlice';
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useAppDispatch();
-  const constructorData = useSelector(selectorConstructor);
-  const orderRequest = useSelector(selectorisLoading);
-  const isAuthenticated = useSelector(selectorAuthenticated);
+  const constructorData = useAppSelector(selectorConstructor);
+  const orderRequest = useAppSelector(selectorisLoading);
+  const isAuthenticated = useAppSelector(selectorAuthenticated);
   const navigate = useNavigate();
-  const order = useSelector(selectorGetOrder);
+  const order = useAppSelector(selectorGetOrder);
 
   const constructorItems = {
     bun: constructorData.bun,

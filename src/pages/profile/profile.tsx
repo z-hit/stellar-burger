@@ -1,17 +1,16 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, FormEvent, SyntheticEvent, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import {
   selectorIsLoading,
   selectorUserData,
   updateUser
 } from '../../services/userSlice';
 import { Preloader } from '@ui';
-import { useAppDispatch } from '../../components/app/hooks';
+import { useAppDispatch, useAppSelector } from '../../components/app/hooks';
 
 export const Profile: FC = () => {
-  const userData = useSelector(selectorUserData);
-  const isLoading = useSelector(selectorIsLoading);
+  const userData = useAppSelector(selectorUserData);
+  const isLoading = useAppSelector(selectorIsLoading);
   const dispatch = useAppDispatch();
   const user = userData ? userData : { name: '', email: '' };
 

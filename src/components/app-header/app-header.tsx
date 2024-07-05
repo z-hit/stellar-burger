@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { AppHeaderUI } from '@ui';
-import { useSelector } from 'react-redux';
 import { selectorUserData } from '../../services/userSlice';
+import { useAppSelector } from '../app/hooks';
 
 export const AppHeader: FC = () => {
-  const userData = useSelector(selectorUserData);
+  const userData = useAppSelector(selectorUserData);
   const name = userData ? userData.name : '';
 
   return <AppHeaderUI userName={name} />;
