@@ -7,7 +7,7 @@ import {
   selectorFeedData,
   selectorIsLoading
 } from '../../services/feedSlice';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const Feed: FC = () => {
   const feedData = useAppSelector(selectorFeedData);

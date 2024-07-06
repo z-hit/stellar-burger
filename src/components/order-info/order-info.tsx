@@ -5,7 +5,7 @@ import { TIngredient } from '@utils-types';
 import { selectorIngredients } from '../../services/ingredientsSlice';
 import { useParams } from 'react-router-dom';
 import { getFeed, selectorFeedData } from '../../services/feedSlice';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const OrderInfo: FC = () => {
   const dispatch = useAppDispatch();

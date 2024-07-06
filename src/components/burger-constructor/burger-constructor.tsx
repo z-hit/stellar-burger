@@ -13,7 +13,7 @@ import {
 } from '../../services/orderSlice';
 import { useNavigate } from 'react-router-dom';
 import { addOrder, selectorAuthenticated } from '../../services/userSlice';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useAppDispatch();

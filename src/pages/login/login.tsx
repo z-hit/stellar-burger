@@ -2,7 +2,7 @@ import { FC, FormEvent, useState } from 'react';
 import { LoginUI } from '@ui-pages';
 import { loginUser, selectorIsLoading } from '../../services/userSlice';
 import { Preloader } from '@ui';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const Login: FC = () => {
   const dispatch = useAppDispatch();

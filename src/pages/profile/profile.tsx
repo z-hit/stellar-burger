@@ -6,7 +6,7 @@ import {
   updateUser
 } from '../../services/userSlice';
 import { Preloader } from '@ui';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const Profile: FC = () => {
   const userData = useAppSelector(selectorUserData);

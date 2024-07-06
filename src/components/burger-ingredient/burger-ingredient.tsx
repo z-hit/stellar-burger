@@ -5,7 +5,7 @@ import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
 import { constructorSlice } from '../../services/constructorSlice';
 import { nanoid } from '@reduxjs/toolkit';
-import { useAppDispatch } from '../../utils/hooks';
+import { useAppDispatch } from '../../hooks/hooks';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {

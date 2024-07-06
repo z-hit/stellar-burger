@@ -18,7 +18,7 @@ import { ProtectedRoute } from '../protected-route/protected-route';
 import { useEffect } from 'react';
 import { getIngredients } from '../../services/ingredientsSlice';
 import { checkUserAuth, setAuthChecked } from '../../services/userSlice';
-import { useAppDispatch } from '../../utils/hooks';
+import { useAppDispatch } from '../../hooks/hooks';
 
 const App = () => {
   const location = useLocation();

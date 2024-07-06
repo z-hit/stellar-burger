@@ -5,7 +5,7 @@ import { BurgerConstructor } from '../../components';
 import { Preloader } from '../../components/ui';
 import { FC } from 'react';
 import { selectorIngredientsLoading } from '../../services/ingredientsSlice';
-import { useAppSelector } from '../../utils/hooks';
+import { useAppSelector } from '../../hooks/hooks';
 
 export const ConstructorPage: FC = () => {
   const isIngredientsLoading = useAppSelector(selectorIngredientsLoading);

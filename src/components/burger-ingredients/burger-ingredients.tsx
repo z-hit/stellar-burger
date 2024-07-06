@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { TTabMode } from '@utils-types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 import { selectorIngredients } from '../../services/ingredientsSlice';
-import { useAppSelector } from '../../utils/hooks';
+import { useAppSelector } from '../../hooks/hooks';
 
 export const BurgerIngredients: FC = () => {
   const ingredients = useAppSelector(selectorIngredients);
