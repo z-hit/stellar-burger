@@ -1,24 +1,40 @@
-import { FC, SyntheticEvent, useState } from 'react';
+import { FC, FormEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
+import { registerUser, selectorIsLoading } from '../../services/userSlice';
+import { Preloader } from '@ui';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const Register: FC = () => {
-  const [userName, setUserName] = useState('');
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(selectorIsLoading);
+
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    if (!name || !email || !password) {
+      return setError('Пожалуйста, заполните все поля');
+    }
+    dispatch(registerUser({ name, email, password }));
   };
+
+  if (isLoading) {
+    return <Preloader />;
+  }
 
   return (
     <RegisterUI
-      errorText=''
+      errorText={error}
       email={email}
-      userName={userName}
+      userName={name}
       password={password}
       setEmail={setEmail}
       setPassword={setPassword}
-      setUserName={setUserName}
+      setUserName={setName}
       handleSubmit={handleSubmit}
     />
   );
