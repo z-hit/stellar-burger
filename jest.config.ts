@@ -1,7 +1,7 @@
-// jest.config.ts
 import type { JestConfigWithTsJest } from 'ts-jest';
 
 const jestConfig: JestConfigWithTsJest = {
+  verbose: true,
   // [...]
   transform: {
     preset: 'ts-jest',
