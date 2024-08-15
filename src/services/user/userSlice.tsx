@@ -7,10 +7,10 @@ import {
   logoutApi,
   registerUserApi,
   updateUserApi
-} from '../utils/burger-api';
+} from '@api';
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder, TUser } from '@utils-types';
-import { deleteCookie, getCookie, setCookie } from '../utils/cookie';
+import { deleteCookie, getCookie, setCookie } from '../../utils/cookie';
 
 type TUserState = {
   data: TUser | undefined;

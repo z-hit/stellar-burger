@@ -1,5 +1,5 @@
-import { getOrderByNumberApi, orderBurgerApi } from '../utils/burger-api';
-import { RequestStatus } from '../utils/request-status';
+import { getOrderByNumberApi, orderBurgerApi } from '@api';
+import { RequestStatus } from '../../utils/request-status';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 

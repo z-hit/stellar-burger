@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { BurgerIngredientUI } from '@ui';
 import { TBurgerIngredientProps } from './type';
-import { constructorSlice } from '../../services/constructorSlice';
+import { constructorSlice } from '../../services/constructor/constructorSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { useAppDispatch } from '../../hooks/hooks';
 

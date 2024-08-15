@@ -1,12 +1,12 @@
-import { ingredientsSlice, reducer } from '../src/services/ingredientsSlice';
-import { orderSlice } from '../src/services/orderSlice';
-import { constructorSlice } from '../src/services/constructorSlice';
-import { feedSlice } from '../src/services/feedSlice';
-import { userSlice } from '../src/services/userSlice';
 import { describe } from '@jest/globals';
 import { configureStore } from '@reduxjs/toolkit';
-import { rootReducer } from '../src/services/store';
 import { act } from 'react-test-renderer';
+import { ingredientsSlice } from '../ingredients/ingredientsSlice';
+import { orderSlice } from '../order/orderSlice';
+import { constructorSlice } from '../constructor/constructorSlice';
+import { feedSlice } from '../feed/feedSlice';
+import { userSlice } from '../user/userSlice';
+import { rootReducer } from './store';
 
 const initialRootState = {
   [ingredientsSlice.name]: ingredientsSlice.getInitialState(),

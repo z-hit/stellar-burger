@@ -4,7 +4,7 @@ import { BurgerConstructorUI } from '@ui';
 import {
   clearConstructor,
   selectorConstructor
-} from '../../services/constructorSlice';
+} from '../../services/constructor/constructorSlice';
 import {
   clearOrder,
   orderBurger,

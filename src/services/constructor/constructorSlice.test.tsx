@@ -6,7 +6,7 @@ import {
   moveIngredientUp,
   reducer,
   removeIngredient
-} from '../src/services/constructorSlice';
+} from '../constructor/constructorSlice';
 
 jest.mock('nanoid', () => ({ nanoid: () => '4' }));
 
