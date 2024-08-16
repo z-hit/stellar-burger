@@ -1,31 +1,7 @@
 import { expect, test, describe } from '@jest/globals';
 import { getFeed, feedSlice } from '../feed/feedSlice';
 import { RequestStatus } from '../../utils/request-status';
-
-const mockFeedData = {
-  orders: [
-    {
-      _id: '11',
-      status: 'ready',
-      name: 'Tasty burger',
-      createdAt: '12:00',
-      updatedAt: '12:15',
-      number: 1,
-      ingredients: ['1', '2']
-    },
-    {
-      _id: '22',
-      status: 'ready',
-      name: 'Super tasty burger',
-      createdAt: '13:00',
-      updatedAt: '13:15',
-      number: 2,
-      ingredients: ['1', '2', '3']
-    }
-  ],
-  total: 2,
-  totalToday: 2
-};
+import { mockOrders } from '../../mocks/mockData/mockOrders';
 
 describe('test feedSlice', () => {
   const initialState = {
@@ -37,6 +13,12 @@ describe('test feedSlice', () => {
     status: RequestStatus.Idle,
     isLoading: false,
     error: undefined
+  };
+
+  const mockFeedData = {
+    orders: mockOrders,
+    total: 2,
+    totalToday: 2
   };
 
   test('test feedSlice - Loading status', () => {
@@ -51,7 +33,7 @@ describe('test feedSlice', () => {
     });
   });
 
-  test('test ingredientsSlice - Success status', () => {
+  test('test feedSlice - Success status', () => {
     const action = getFeed.fulfilled(mockFeedData, '', undefined);
     const newState = feedSlice.reducer(initialState, action);
 
@@ -63,7 +45,7 @@ describe('test feedSlice', () => {
     });
   });
 
-  test('test ingredientsSlice - Failed status', () => {
+  test('test feedSlice - Failed status', () => {
     const action = getFeed.rejected(null, '');
     const newState = feedSlice.reducer(initialState, action);
 
