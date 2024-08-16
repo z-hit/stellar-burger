@@ -7,12 +7,14 @@ type TIngredientsState = {
   data: TIngredient[];
   status: RequestStatus;
   isLoading: boolean;
+  error: string | undefined;
 };
 
 export const initialState: TIngredientsState = {
   data: [],
   status: RequestStatus.Idle,
-  isLoading: false
+  isLoading: false,
+  error: undefined
 };
 
 export const getIngredients = createAsyncThunk<TIngredient[]>(
@@ -40,9 +42,10 @@ export const ingredientsSlice = createSlice({
         state.status = RequestStatus.Success;
         state.isLoading = false;
       })
-      .addCase(getIngredients.rejected, (state) => {
+      .addCase(getIngredients.rejected, (state, action) => {
         state.status = RequestStatus.Failed;
         state.isLoading = false;
+        state.error = action.error.message;
       });
   }
 });

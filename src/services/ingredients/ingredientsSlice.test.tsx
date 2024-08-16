@@ -7,7 +7,8 @@ describe('ingredientsSlice tests:', () => {
   const initialState = {
     data: [],
     isLoading: false,
-    status: RequestStatus.Idle
+    status: RequestStatus.Idle,
+    error: undefined
   };
 
   test('test ingredientsSlice - Loading status', () => {
@@ -17,7 +18,8 @@ describe('ingredientsSlice tests:', () => {
     expect(newState).toEqual({
       data: [],
       isLoading: true,
-      status: RequestStatus.Loading
+      status: RequestStatus.Loading,
+      error: undefined
     });
   });
 
@@ -28,7 +30,8 @@ describe('ingredientsSlice tests:', () => {
     expect(newState).toEqual({
       data: mockIngredients,
       isLoading: false,
-      status: RequestStatus.Success
+      status: RequestStatus.Success,
+      error: undefined
     });
   });
 
@@ -39,7 +42,8 @@ describe('ingredientsSlice tests:', () => {
     expect(newState).toEqual({
       data: [],
       isLoading: false,
-      status: RequestStatus.Failed
+      status: RequestStatus.Failed,
+      error: expect.any(String)
     });
   });
 });

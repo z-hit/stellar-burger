@@ -6,7 +6,7 @@ import {
   getFeed,
   selectorFeedData,
   selectorIsLoading
-} from '../../services/feedSlice';
+} from '../../services/feed/feedSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const Feed: FC = () => {

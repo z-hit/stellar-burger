@@ -4,7 +4,7 @@ import {
   selectorIsLoading,
   selectorUserData,
   updateUser
-} from '../../services/userSlice';
+} from '../../services/user/userSlice';
 import { Preloader } from '@ui';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 

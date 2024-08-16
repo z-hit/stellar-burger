@@ -10,9 +10,9 @@ import {
   orderBurger,
   selectorGetOrder,
   selectorisLoading
-} from '../../services/orderSlice';
+} from '../../services/order/orderSlice';
 import { useNavigate } from 'react-router-dom';
-import { addOrder, selectorAuthenticated } from '../../services/userSlice';
+import { addOrder, selectorAuthenticated } from '../../services/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const BurgerConstructor: FC = () => {

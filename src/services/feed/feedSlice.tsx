@@ -13,6 +13,7 @@ type TFeedState = {
   data: TFeedData;
   status: RequestStatus;
   isLoading: boolean;
+  error: string | undefined;
 };
 
 const initialState: TFeedState = {
@@ -22,7 +23,8 @@ const initialState: TFeedState = {
     totalToday: 0
   },
   status: RequestStatus.Idle,
-  isLoading: false
+  isLoading: false,
+  error: undefined
 };
 
 export const getFeed = createAsyncThunk<TFeedData>('feed/getFeed', getFeedsApi);
@@ -41,9 +43,10 @@ export const feedSlice = createSlice({
         state.isLoading = true;
         state.status = RequestStatus.Loading;
       })
-      .addCase(getFeed.rejected, (state) => {
+      .addCase(getFeed.rejected, (state, action) => {
         state.isLoading = false;
         state.status = RequestStatus.Failed;
+        state.error = action.error.message;
       })
       .addCase(getFeed.fulfilled, (state, action) => {
         state.isLoading = false;
