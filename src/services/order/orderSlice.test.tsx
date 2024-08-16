@@ -20,7 +20,7 @@ describe('test orderSlice', () => {
     ingredients: ['1', '2']
   };
 
-  test('test orderSlice - Loading status', () => {
+  test('test getOrderByNumber - Loading status', () => {
     const action = getOrderByNumber.pending('', 1, {});
     const newState = orderSlice.reducer(initialState, action);
 
@@ -32,7 +32,7 @@ describe('test orderSlice', () => {
     });
   });
 
-  test('test orderSlice - Success status', () => {
+  test('test getOrderByNumber - Success status', () => {
     const action = getOrderByNumber.fulfilled(mockOrder, '', 1);
     const newState = orderSlice.reducer(initialState, action);
 
@@ -44,7 +44,7 @@ describe('test orderSlice', () => {
     });
   });
 
-  test('test orderSlice - Failed status', () => {
+  test('test getOrderByNumber - Failed status', () => {
     const action = getOrderByNumber.rejected(null, '', 1);
     const newState = orderSlice.reducer(initialState, action);
 

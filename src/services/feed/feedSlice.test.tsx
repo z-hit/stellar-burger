@@ -21,7 +21,7 @@ describe('test feedSlice', () => {
     totalToday: 2
   };
 
-  test('test feedSlice - Loading status', () => {
+  test('test getFeed - Loading status', () => {
     const action = getFeed.pending('', undefined, {});
     const newState = feedSlice.reducer(initialState, action);
 
@@ -33,7 +33,7 @@ describe('test feedSlice', () => {
     });
   });
 
-  test('test feedSlice - Success status', () => {
+  test('test getFeed - Success status', () => {
     const action = getFeed.fulfilled(mockFeedData, '', undefined);
     const newState = feedSlice.reducer(initialState, action);
 
@@ -45,7 +45,7 @@ describe('test feedSlice', () => {
     });
   });
 
-  test('test feedSlice - Failed status', () => {
+  test('test getFeed - Failed status', () => {
     const action = getFeed.rejected(null, '');
     const newState = feedSlice.reducer(initialState, action);
 
