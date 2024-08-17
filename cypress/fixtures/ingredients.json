@@ -1,0 +1,43 @@
+{
+  "ingredients": [
+    {
+      "_id": "111",
+      "name": "Space bun",
+      "type": "bun",
+      "proteins": 11,
+      "fat": 21,
+      "carbohydrates": 31,
+      "calories": 111,
+      "price": 100,
+      "image": "image-url",
+      "image_large": "some-url",
+      "image_mobile": "some-url2"
+    },
+    {
+      "_id": "222",
+      "name": "Space souce",
+      "type": "souce",
+      "proteins": 12,
+      "fat": 22,
+      "carbohydrates": 31,
+      "calories": 222,
+      "price": 200,
+      "image": "image-url",
+      "image_large": "some-url",
+      "image_mobile": "some-url2"
+    },
+    {
+      "_id": "333",
+      "name": "Space meat",
+      "type": "main",
+      "proteins": 12,
+      "fat": 22,
+      "carbohydrates": 31,
+      "calories": 222,
+      "price": 200,
+      "image": "image-url",
+      "image_large": "some-url",
+      "image_mobile": "some-url2"
+    }
+  ]
+}
