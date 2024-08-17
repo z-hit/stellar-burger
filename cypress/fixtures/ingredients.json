@@ -3,16 +3,16 @@
   "data": [
     {
       "_id": "111",
-      "name": "Space bun",
-      "type": "bun",
+      "name": "Space meat",
+      "type": "main",
       "proteins": 11,
       "fat": 21,
       "carbohydrates": 31,
       "calories": 111,
       "price": 100,
-      "image": "image-url",
-      "image_large": "some-url",
-      "image_mobile": "some-url2"
+      "image": "https://code.s3.yandex.net/react/code/meat-01.png",
+      "image_large": "https://code.s3.yandex.net/react/code/meat-01-mobile.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/meat-01-large.png"
     },
     {
       "_id": "222",
@@ -23,22 +23,22 @@
       "carbohydrates": 31,
       "calories": 222,
       "price": 200,
-      "image": "image-url",
-      "image_large": "some-url",
-      "image_mobile": "some-url2"
+      "image": "https://code.s3.yandex.net/react/code/sauce-02.png",
+      "image_large": "https://code.s3.yandex.net/react/code/sauce-02-mobile.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/sauce-02-large.png"
     },
     {
       "_id": "333",
-      "name": "Space meat",
-      "type": "main",
+      "name": "Space bun",
+      "type": "bun",
       "proteins": 12,
       "fat": 22,
       "carbohydrates": 31,
       "calories": 222,
       "price": 200,
-      "image": "image-url",
-      "image_large": "some-url",
-      "image_mobile": "some-url2"
+      "image": "https://code.s3.yandex.net/react/code/bun-01.png",
+      "image_large": "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
+      "image_mobile": "https://code.s3.yandex.net/react/code/bun-01-large.png"
     }
   ]
 }
