@@ -37,4 +37,8 @@ describe('test Constructor page', () => {
     cy.get('body').click('topLeft');
     cy.get(`[data-cy='modal']`).should('not.exist');
   });
+
+  it('test order burger', () => {
+    cy.get(`[data-cy='ingredient']`);
+  });
 });
