@@ -8,6 +8,8 @@ describe('test Constructor page', () => {
     });
   });
 
+  
+
   it('test getIngredients API returns ingredients', () => {
     cy.visit('http://localhost:4000/');
 
@@ -36,15 +38,10 @@ describe('test Constructor page', () => {
 
   it('test open modal and close with "overlay" click', () => {
     cy.visit('http://localhost:4000/');
+
     cy.get(`[data-cy='ingredient']`).first().click();
     cy.get(`[data-cy='modal']`).should('exist');
     cy.get('body').click('topLeft');
     cy.get(`[data-cy='modal']`).should('not.exist');
-  });
-
-  it('test order burger', () => {
-    cy.visit('http://localhost:4000/');
-
-    cy.get(`[data-cy='ingredient']`);
   });
 });
