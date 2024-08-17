@@ -25,13 +25,17 @@ describe('test Constructor page', () => {
     cy.get(`[data-cy='main']`).should('contain', 'Space sauce');
   });
 
-  it('test open and close ingredient modal', () => {
+  it('test open modal and close with "close" button', () => {
     cy.visit('http://localhost:4000/');
 
     cy.get(`[data-cy='ingredient']`).first().click();
     cy.get(`[data-cy='modal']`).should('exist');
     cy.get(`[data-cy='modal']`).find('button').click();
     cy.get(`[data-cy='modal']`).should('not.exist');
+  });
+
+  it('test open modal and close with "overlay" click', () => {
+    cy.visit('http://localhost:4000/');
     cy.get(`[data-cy='ingredient']`).first().click();
     cy.get(`[data-cy='modal']`).should('exist');
     cy.get('body').click('topLeft');
@@ -39,6 +43,8 @@ describe('test Constructor page', () => {
   });
 
   it('test order burger', () => {
+    cy.visit('http://localhost:4000/');
+
     cy.get(`[data-cy='ingredient']`);
   });
 });
