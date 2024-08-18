@@ -2,19 +2,20 @@
 
 describe('test Constructor page', () => {
   const testUrl = 'http://localhost:4000/';
+  const userName = `[data-cy='user-name']`;
   const modal = `[data-cy='modal']`;
   const ingredientsSection = `[data-cy='ingredients']`;
-  const constructorSection = `[data-cy='constructor']`;
   const bunTop = `[data-cy='bun-top']`;
   const bunBottom = `[data-cy='bun-bottom']`;
   const noBun = `[data-cy='no-bun']`;
   const main = `[data-cy='main']`;
   const ingredient = `[data-cy='ingredient']`;
+  const orderNumber = `[data-cy='order-number']`;
 
   beforeEach(() => {
     cy.intercept('GET', `api/ingredients`, {
       fixture: 'ingredients.json'
-    }).as('getIngredients');
+    });
 
     cy.intercept('GET', `api/auth/user`, {
       fixture: 'user.json'
@@ -22,7 +23,7 @@ describe('test Constructor page', () => {
 
     cy.intercept('POST', `api/orders`, {
       fixture: 'order.json'
-    }).as('postOrder');
+    });
   });
 
   it('test getIngredients API returns ingredients', () => {
@@ -64,10 +65,10 @@ describe('test Constructor page', () => {
   it('test user is authed', () => {
     cy.setCookie('accessToken', 'someToken');
     cy.visit(testUrl);
-    cy.get(`[data-cy='user-name']`).should('contain.text', 'cat42');
+    cy.get(userName).should('contain.text', 'cat42');
   });
 
-  it('test burger constructed, ordered, Modal opens, order number correct, modal closes, constructor clears', () => {
+  it('test burger constructed, ordered, success modal opens, order number is correct, modal closes, constructor clears', () => {
     cy.setCookie('accessToken', 'someToken');
     cy.visit(testUrl);
 
@@ -78,7 +79,7 @@ describe('test Constructor page', () => {
     cy.get(main).should('contain', 'Space sauce');
     cy.contains('Оформить заказ').click();
     cy.get(modal).should('exist');
-    cy.get(modal).find('h2').should('contain.text', '98765');
+    cy.get(modal).find(orderNumber).should('contain.text', '98765');
     cy.get(modal).find('button').click();
     cy.get(modal).should('not.exist');
     cy.get(main).should('contain.text', 'Выберите начинку');
