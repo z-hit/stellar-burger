@@ -4,13 +4,8 @@ describe('test orderBurger process', () => {
   const testUrl = 'http://localhost:4000/';
 
   beforeEach(() => {
-    cy.fixture('tokens.json').as('tokens');
-
-    cy.visit(testUrl, {
-      onBeforeLoad: function (window) {
-        window.localStorage.setItem('token', '@tokens.accessToken');
-      }
-    });
+    cy.setCookie('accessToken', 'someToken');
+    cy.visit(testUrl);
 
     cy.intercept('GET', `api/ingredients`, {
       fixture: 'ingredients.json'
