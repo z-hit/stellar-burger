@@ -1,13 +1,21 @@
 /// <reference types="cypress" />
 
 describe('test Constructor page', () => {
+  const testUrl = 'http://localhost:4000/';
+
   beforeEach(() => {
-    cy.visit('http://localhost:4000/');
     cy.intercept('GET', `api/ingredients`, {
       fixture: 'ingredients.json'
-    });
-  });
+    }).as('getIngredients');
 
+    cy.intercept('GET', `api/auth/user`, {
+      fixture: 'user.json'
+    });
+
+    cy.intercept('POST', `api/orders`, {
+      fixture: 'order.json'
+    }).as('postOrder');
+  });
 
   it('test getIngredients API returns ingredients', () => {
     cy.visit('http://localhost:4000/');
@@ -44,5 +52,9 @@ describe('test Constructor page', () => {
     cy.get(`[data-cy='modal']`).should('not.exist');
   });
 
-
+  it('test user is authed', () => {
+    cy.setCookie('accessToken', 'someToken');
+    cy.visit(testUrl);
+    cy.get(`[data-cy='user-name']`).should('contain.text', 'cat42');
+  });
 });
