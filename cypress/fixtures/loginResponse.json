@@ -1,9 +1,0 @@
-{
-  "success": true,
-  "accessToken": "aaa",
-  "refreshToken": "rrr",
-  "user": {
-    "email": "cat42@mail.ru",
-    "name": "cat42"
-  }
-}
