@@ -8,7 +8,6 @@ describe('test Constructor page', () => {
     });
   });
 
-  
 
   it('test getIngredients API returns ingredients', () => {
     cy.visit('http://localhost:4000/');
@@ -44,4 +43,6 @@ describe('test Constructor page', () => {
     cy.get('body').click('topLeft');
     cy.get(`[data-cy='modal']`).should('not.exist');
   });
+
+
 });
