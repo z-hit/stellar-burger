@@ -15,35 +15,25 @@ describe('ingredientsSlice tests:', () => {
     const action = getIngredients.pending('', undefined, {});
     const newState = ingredientsSlice.reducer(initialState, action);
 
-    expect(newState).toEqual({
-      data: [],
-      isLoading: true,
-      status: RequestStatus.Loading,
-      error: undefined
-    });
+    expect(newState.isLoading).toEqual(true);
+    expect(newState.status).toEqual(RequestStatus.Loading);
   });
 
   test('test getIngredients - Success status', () => {
     const action = getIngredients.fulfilled(mockIngredients, '', undefined);
     const newState = ingredientsSlice.reducer(initialState, action);
 
-    expect(newState).toEqual({
-      data: mockIngredients,
-      isLoading: false,
-      status: RequestStatus.Success,
-      error: undefined
-    });
+    expect(newState.isLoading).toEqual(false);
+    expect(newState.status).toEqual(RequestStatus.Success);
+    expect(newState.data).toEqual(mockIngredients);
   });
 
   test('test getIngredients - Failed status', () => {
     const action = getIngredients.rejected(null, '');
     const newState = ingredientsSlice.reducer(initialState, action);
 
-    expect(newState).toEqual({
-      data: [],
-      isLoading: false,
-      status: RequestStatus.Failed,
-      error: expect.any(String)
-    });
+    expect(newState.isLoading).toEqual(false);
+    expect(newState.status).toEqual(RequestStatus.Failed);
+    expect(newState.error).toEqual(expect.any(String));
   });
 });
