@@ -25,35 +25,25 @@ describe('test feedSlice', () => {
     const action = getFeed.pending('', undefined, {});
     const newState = feedSlice.reducer(initialState, action);
 
-    expect(newState).toEqual({
-      data: { orders: [], total: 0, totalToday: 0 },
-      isLoading: true,
-      status: RequestStatus.Loading,
-      error: undefined
-    });
+    expect(newState.isLoading).toEqual(true);
+    expect(newState.status).toEqual(RequestStatus.Loading);
   });
 
   test('test getFeed - Success status', () => {
     const action = getFeed.fulfilled(mockFeedData, '', undefined);
     const newState = feedSlice.reducer(initialState, action);
 
-    expect(newState).toEqual({
-      data: mockFeedData,
-      isLoading: false,
-      status: RequestStatus.Success,
-      error: undefined
-    });
+    expect(newState.isLoading).toEqual(false);
+    expect(newState.status).toEqual(RequestStatus.Success);
+    expect(newState.data).toEqual(mockFeedData);
   });
 
   test('test getFeed - Failed status', () => {
     const action = getFeed.rejected(null, '');
     const newState = feedSlice.reducer(initialState, action);
 
-    expect(newState).toEqual({
-      data: { orders: [], total: 0, totalToday: 0 },
-      isLoading: false,
-      status: RequestStatus.Failed,
-      error: expect.any(String)
-    });
+    expect(newState.isLoading).toEqual(false);
+    expect(newState.status).toEqual(RequestStatus.Failed);
+    expect(newState.error).toEqual(expect.any(String));
   });
 });

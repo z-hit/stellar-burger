@@ -1,4 +1,4 @@
 export const mockUser = {
-  email: 'tes@test.com',
+  email: 'test@test.com',
   name: 'testUser'
 };

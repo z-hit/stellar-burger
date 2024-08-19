@@ -120,7 +120,6 @@ export const userSlice = createSlice({
       })
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
-        state.error = undefined;
         state.isAuthenticated = false;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
