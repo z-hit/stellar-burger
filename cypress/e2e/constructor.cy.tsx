@@ -44,11 +44,12 @@ describe('test Constructor page', () => {
     cy.get(main).should('contain', 'Space sauce');
   });
 
-  it('test open modal and close with "close" button', () => {
+  it('test open modal, check correct ingredient, and close with "close" button', () => {
     cy.visit(testUrl);
 
     cy.get(ingredient).first().click();
     cy.get(modal).should('exist');
+    cy.get(modal).should('contain.text', 'Space bun');
     cy.get(modal).find('button').click();
     cy.get(modal).should('not.exist');
   });
@@ -65,7 +66,10 @@ describe('test Constructor page', () => {
   it('test user is authed', () => {
     cy.setCookie('accessToken', 'someToken');
     cy.visit(testUrl);
+
     cy.get(userName).should('contain.text', 'cat42');
+
+    cy.clearAllCookies();
   });
 
   it('test burger constructed, ordered, success modal opens, order number is correct, modal closes, constructor clears', () => {
@@ -84,5 +88,7 @@ describe('test Constructor page', () => {
     cy.get(modal).should('not.exist');
     cy.get(main).should('contain.text', 'Выберите начинку');
     cy.get(noBun).should('contain.text', 'Выберите булки');
+
+    cy.clearAllCookies();
   });
 });

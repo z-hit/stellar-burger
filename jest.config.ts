@@ -19,11 +19,20 @@ const jestConfig: JestConfigWithTsJest = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/'
   }),
-  testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.[jt]s?(x)',
-    '<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)'
+  testMatch: ['<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)'],
+  collectCoverage: true,
+  coverageProvider: 'v8',
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: [
+    './src/services/**',
+    '!**/node_modules/**',
+    '!**/src/index.tsx'
+  ],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/build/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/dist/'
   ]
-  //testRegex: '.*/src/.*\\.test\\.(t|j)sx?$'
 };
 
 export default jestConfig;
