@@ -19,7 +19,7 @@ const initialRootState = {
 describe('test rootReducer', () => {
   test('test rootReducer initial state', () => {
     const store = configureStore({ reducer: rootReducer });
-    const action = { type: 'SOME_ACTION' };
+    const action = { type: 'UNKNOWN_ACTION' };
     store.dispatch(action);
     expect(store.getState()).toEqual(initialRootState);
   });

@@ -8,22 +8,14 @@ import {
   registerUser,
   loginUser,
   updateUser,
-  logoutUser
+  logoutUser,
+  initialState
 } from './userSlice';
 import { expect, test } from '@jest/globals';
 import { mockOrders } from '../../mocks/mockData/mockOrders';
 import { mockUser } from '../../mocks/mockData/mockUser';
 
 describe('test userSlice', () => {
-  const initialState = {
-    data: undefined,
-    orders: [],
-    isAuthChecked: false,
-    isAuthenticated: false,
-    error: undefined,
-    isLoading: false
-  };
-
   const mockOrderToAdd = mockOrders[0];
   const mockUserRegisterData = {
     ...mockUser,

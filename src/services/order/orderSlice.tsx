@@ -12,7 +12,7 @@ type TOrderState = {
   error: string | undefined;
 };
 
-const initialState: TOrderState = {
+export const initialState: TOrderState = {
   order: null,
   status: RequestStatus.Idle,
   isLoading: false,

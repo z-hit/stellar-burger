@@ -1,20 +1,9 @@
 import { expect, test, describe } from '@jest/globals';
-import { getFeed, feedSlice } from '../feed/feedSlice';
+import { getFeed, feedSlice, initialState } from '../feed/feedSlice';
 import { RequestStatus } from '../../utils/request-status';
 import { mockOrders } from '../../mocks/mockData/mockOrders';
 
 describe('test feedSlice', () => {
-  const initialState = {
-    data: {
-      orders: [],
-      total: 0,
-      totalToday: 0
-    },
-    status: RequestStatus.Idle,
-    isLoading: false,
-    error: undefined
-  };
-
   const mockFeedData = {
     orders: mockOrders,
     total: 2,

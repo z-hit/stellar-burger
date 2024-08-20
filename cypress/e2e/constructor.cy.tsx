@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
 describe('test Constructor page', () => {
-  const testUrl = 'http://localhost:4000/';
   const userName = `[data-cy='user-name']`;
   const modal = `[data-cy='modal']`;
   const ingredientsSection = `[data-cy='ingredients']`;
@@ -27,7 +26,7 @@ describe('test Constructor page', () => {
   });
 
   it('test getIngredients API returns ingredients', () => {
-    cy.visit(testUrl);
+    cy.visit('/');
 
     cy.get(ingredientsSection).should('contain', 'Space bun');
     cy.get(ingredientsSection).should('contain', 'Space meat');
@@ -35,7 +34,7 @@ describe('test Constructor page', () => {
   });
 
   it('test add ingredients to constructor', () => {
-    cy.visit(testUrl);
+    cy.visit('/');
 
     cy.get(ingredientsSection).find('button').click({ multiple: true });
     cy.get(bunTop).should('contain', 'Space bun');
@@ -45,7 +44,7 @@ describe('test Constructor page', () => {
   });
 
   it('test open modal, check correct ingredient, and close with "close" button', () => {
-    cy.visit(testUrl);
+    cy.visit('/');
 
     cy.get(ingredient).first().click();
     cy.get(modal).should('exist');
@@ -55,7 +54,7 @@ describe('test Constructor page', () => {
   });
 
   it('test open modal and close with "overlay" click', () => {
-    cy.visit(testUrl);
+    cy.visit('/');
 
     cy.get(ingredient).first().click();
     cy.get(modal).should('exist');
@@ -65,7 +64,7 @@ describe('test Constructor page', () => {
 
   it('test user is authed', () => {
     cy.setCookie('accessToken', 'someToken');
-    cy.visit(testUrl);
+    cy.visit('/');
 
     cy.get(userName).should('contain.text', 'cat42');
 
@@ -74,7 +73,7 @@ describe('test Constructor page', () => {
 
   it('test burger constructed, ordered, success modal opens, order number is correct, modal closes, constructor clears', () => {
     cy.setCookie('accessToken', 'someToken');
-    cy.visit(testUrl);
+    cy.visit('/');
 
     cy.get(ingredientsSection).find('button').click({ multiple: true });
     cy.get(bunTop).should('contain', 'Space bun');

@@ -2,20 +2,13 @@ import {
   orderSlice,
   getOrderByNumber,
   clearOrder,
-  orderBurger
+  orderBurger,
+  initialState
 } from './orderSlice';
 import { expect, test } from '@jest/globals';
 import { RequestStatus } from '../../utils/request-status';
-import { mockIngredients } from 'src/mocks/mockData/mockIngredients';
 
 describe('test orderSlice', () => {
-  const initialState = {
-    order: null,
-    status: RequestStatus.Idle,
-    isLoading: false,
-    error: undefined
-  };
-
   const mockOrder = {
     _id: '11',
     status: 'ready',

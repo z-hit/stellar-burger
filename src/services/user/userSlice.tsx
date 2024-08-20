@@ -21,7 +21,7 @@ type TUserState = {
   isLoading: boolean;
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   data: undefined,
   orders: [],
   isAuthChecked: false,

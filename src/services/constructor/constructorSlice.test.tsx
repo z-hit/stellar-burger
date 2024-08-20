@@ -1,5 +1,6 @@
 import { expect, test, describe } from '@jest/globals';
 import {
+  initialState,
   addIngredient,
   clearConstructor,
   moveIngredientDown,
@@ -11,7 +12,7 @@ import {
 jest.mock('nanoid', () => ({ nanoid: () => '4' }));
 
 describe('test constructorSlice reducers', () => {
-  const initialContsructorSliceState = {
+  const initialIngredients = {
     bun: null,
     ingredients: [
       {
@@ -61,7 +62,7 @@ describe('test constructorSlice reducers', () => {
 
   test('test addIngredient reducer', () => {
     const newState = reducer(
-      initialContsructorSliceState,
+      initialIngredients,
       addIngredient({
         id: '4',
         _id: '444',
@@ -142,7 +143,7 @@ describe('test constructorSlice reducers', () => {
 
   test('test removeIngredient reducer', () => {
     const newState = reducer(
-      initialContsructorSliceState,
+      initialIngredients,
       removeIngredient({
         id: '2',
         _id: '222',
@@ -194,7 +195,7 @@ describe('test constructorSlice reducers', () => {
   });
 
   test('test moveIngredientUp reducer', () => {
-    const newState = reducer(initialContsructorSliceState, moveIngredientUp(1));
+    const newState = reducer(initialIngredients, moveIngredientUp(1));
 
     const { ingredients } = newState;
 
@@ -245,10 +246,7 @@ describe('test constructorSlice reducers', () => {
   });
 
   test('test moveIngredientDown reducer', () => {
-    const newState = reducer(
-      initialContsructorSliceState,
-      moveIngredientDown(1)
-    );
+    const newState = reducer(initialIngredients, moveIngredientDown(1));
 
     const { ingredients } = newState;
 
@@ -299,11 +297,8 @@ describe('test constructorSlice reducers', () => {
   });
 
   test('test clearConstructor reducer', () => {
-    const newState = reducer(initialContsructorSliceState, clearConstructor());
+    const newState = reducer(initialIngredients, clearConstructor());
 
-    expect(newState).toEqual({
-      bun: null,
-      ingredients: []
-    });
+    expect(newState).toEqual(initialState);
   });
 });
