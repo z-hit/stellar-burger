@@ -1,5 +1,5 @@
 import { getOrderByNumberApi, orderBurgerApi } from '@api';
-import { RequestStatus } from '../utils/request-status';
+import { RequestStatus } from '../../utils/request-status';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 
@@ -9,12 +9,14 @@ type TOrderState = {
   order: TOrder | null;
   status: RequestStatus;
   isLoading: boolean;
+  error: string | undefined;
 };
 
-const initialState: TOrderState = {
+export const initialState: TOrderState = {
   order: null,
   status: RequestStatus.Idle,
-  isLoading: false
+  isLoading: false,
+  error: undefined
 };
 
 export const orderBurger = createAsyncThunk(
@@ -54,9 +56,10 @@ export const orderSlice = createSlice({
         state.status = RequestStatus.Success;
         state.order = action.payload.order;
       })
-      .addCase(orderBurger.rejected, (state) => {
+      .addCase(orderBurger.rejected, (state, action) => {
         state.isLoading = false;
         state.status = RequestStatus.Failed;
+        state.error = action.error.message;
       })
       .addCase(getOrderByNumber.pending, (state) => {
         state.isLoading = true;
@@ -67,9 +70,10 @@ export const orderSlice = createSlice({
         state.status = RequestStatus.Success;
         state.order = action.payload;
       })
-      .addCase(getOrderByNumber.rejected, (state) => {
+      .addCase(getOrderByNumber.rejected, (state, action) => {
         state.isLoading = false;
         state.status = RequestStatus.Failed;
+        state.error = action.error.message;
       });
   }
 });

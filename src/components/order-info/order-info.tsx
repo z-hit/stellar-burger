@@ -2,9 +2,9 @@ import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-import { selectorIngredients } from '../../services/ingredientsSlice';
+import { selectorIngredients } from '../../services/ingredients/ingredientsSlice';
 import { useParams } from 'react-router-dom';
-import { getFeed, selectorFeedData } from '../../services/feedSlice';
+import { getFeed, selectorFeedData } from '../../services/feed/feedSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const OrderInfo: FC = () => {

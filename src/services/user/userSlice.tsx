@@ -10,7 +10,7 @@ import {
 } from '@api';
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder, TUser } from '@utils-types';
-import { deleteCookie, getCookie, setCookie } from '../utils/cookie';
+import { deleteCookie, getCookie, setCookie } from '../../utils/cookie';
 
 type TUserState = {
   data: TUser | undefined;
@@ -21,7 +21,7 @@ type TUserState = {
   isLoading: boolean;
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   data: undefined,
   orders: [],
   isAuthChecked: false,
@@ -120,7 +120,6 @@ export const userSlice = createSlice({
       })
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
-        state.error = undefined;
         state.isAuthenticated = false;
       })
       .addCase(loginUser.fulfilled, (state, action) => {

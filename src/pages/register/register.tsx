@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
-import { registerUser, selectorIsLoading } from '../../services/userSlice';
+import { registerUser, selectorIsLoading } from '../../services/user/userSlice';
 import { Preloader } from '@ui';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 

@@ -4,15 +4,15 @@ import { BurgerConstructorUI } from '@ui';
 import {
   clearConstructor,
   selectorConstructor
-} from '../../services/constructorSlice';
+} from '../../services/constructor/constructorSlice';
 import {
   clearOrder,
   orderBurger,
   selectorGetOrder,
   selectorisLoading
-} from '../../services/orderSlice';
+} from '../../services/order/orderSlice';
 import { useNavigate } from 'react-router-dom';
-import { addOrder, selectorAuthenticated } from '../../services/userSlice';
+import { addOrder, selectorAuthenticated } from '../../services/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export const BurgerConstructor: FC = () => {

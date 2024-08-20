@@ -1,7 +1,7 @@
 import {
   selectorIsAuthChecked,
   selectorUserData
-} from '../../services/userSlice';
+} from '../../services/user/userSlice';
 import { Preloader } from '../ui/preloader';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
